@@ -44,7 +44,6 @@ jobs:
         deploy-group: ['staging']
         s3-bucket: ['aws-codedeploy-deployments-perimeter']
         s3-filename: ['staging-aws-codedeploy-${{ github.sha }}']
-        auto-scaling-groups: ['CodeDeploy-AS-Group']
     needs: buildAndTest
     steps:
       - uses: actions/checkout@v2
@@ -91,7 +90,6 @@ jobs:
         run: |
           aws deploy create-deployment \
            --application-name ${{ matrix.appname }} \
-           --auto-scaling-groups ${{ matrix.auto-scaling-groups }} \
            --deployment-config-name CodeDeployDefault.OneAtATime \
            --deployment-group-name ${{ matrix.deploy-group }} \
            --file-exists-behavior OVERWRITE \
