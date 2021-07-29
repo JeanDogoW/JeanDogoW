@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /var/www/html/perimeter-server
+    destination: /usr/share/nginx/html
     overwrite: true
 hooks:
   BeforeInstall:
@@ -13,6 +13,7 @@ hooks:
     - location: scripts/reload-pm2.sh
       timeout: 300
       runas: root
-  #AfterInstall:
-  #  - location: scripts/AfterInstallHook.sh
-  #    timeout: 300
+  AfterInstall:
+    - location: scripts/AfterInstallHook.sh
+      timeout: 300
+      runas: root

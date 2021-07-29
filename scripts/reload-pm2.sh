@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /var/www/html/perimeter-server
+cd /usr/share/nginx/html
 pm2 startOrReload ecosystem.config.js
